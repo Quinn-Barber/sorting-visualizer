@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Finlandica:wght@500;600;700&display=swap');
+
+body {
+    background-color: lavenderblush;
+}
+
+.array-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 80%;
+}
+
+.array-bar{
+    width: 3px;
+    background-color: blue;
+    display:inline-block;
+    margin: 0 1px;
+}
+
+.array-container button{
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: black;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
+    border-radius: 10px;
+}
+
+.slider-container .slider{
+    cursor: pointer;
+    opacity: 0.7;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label{
+    color: black;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 0.2rem;
+}
