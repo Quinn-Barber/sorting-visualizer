@@ -26,7 +26,36 @@ export default class SortingVisualizer extends React.Component {
     }
 
     mergeSort() {
-
+        this.disableButtons();
+        var slider = document.getElementById('slider');
+        const animations = sortingAlgorithms.mergeSort(this.state.array);
+        for(let i = 0; i < animations.length; i++){
+            const arrBars = document.getElementsByClassName('array-bar');
+            const changeColor = i % 3 !== 2;
+            if(changeColor){
+                const [idxOne, idxTwo] = animations[i];
+                const idxOneStyle = arrBars[idxOne].style;
+                const idxTwoStyle = arrBars[idxTwo].style;
+                const color = i % 3 === 0 ? 'orange' : 'blue';
+                setTimeout(() => {
+                    idxOneStyle.backgroundColor = color;
+                    idxTwoStyle.backgroundColor = color;
+                }, i * (slider.value*-1 + 11));
+                if(i === animations.length-1){
+                    this.enableButtons();
+                }
+            }
+            else{
+                setTimeout(() => {
+                    const [idxOne, heightChange] = animations[i];
+                    const idxOneStyle = arrBars[idxOne].style;
+                    idxOneStyle.height = `${heightChange}px`;
+                    if(i === animations.length-1){
+                        this.enableButtons();
+                    }
+                }, i * (slider.value*-1 + 11));
+            }
+        }
     }
 
     quickSort() {
@@ -113,7 +142,7 @@ export default class SortingVisualizer extends React.Component {
                 array.push(randomIntFromInterval(-1000, 1000));
             }
             const sortedArray = array.slice().sort((a, b) => a - b);
-            const algoArray = sortingAlgorithms.bubbleSort(array.slice());
+            const algoArray = sortingAlgorithms.mergeSort(array.slice());
             console.log(arraysAreEqual(sortedArray, algoArray));
         }
     }
