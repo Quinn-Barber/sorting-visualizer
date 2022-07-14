@@ -1,7 +1,64 @@
-export const mergeSort = array => {
+export function mergeSort(array){
+    const animations = [];
+    if(array.length <= 1 ) return array;
+    const arrayCopy = array.slice();
+    mergeSortRecurse(array, 0, array.length - 1, arrayCopy, animations);
+    return animations;
+}
 
-    return array;
-};
+function mergeSortRecurse(array, left, right, arrayCopy, animations)
+{
+    if(left >= right) return;
+    const middle = Math.floor((left+right)/2);
+    mergeSortRecurse(arrayCopy, left, middle, array, animations);
+    mergeSortRecurse(arrayCopy, middle+1, right, array, animations);
+    merge(array, left, middle, right, arrayCopy, animations);
+}
+
+function merge(array, left, middle, right, arrayCopy, animations)
+{
+    var k, i, j;
+    k = left;
+    i = left;
+    j = middle + 1;
+
+    while( i <= middle && j <= right) {
+        animations.push([i, j]);
+        animations.push([i, j]);
+
+        if(arrayCopy[i] <= arrayCopy[j]){
+            animations.push([k, arrayCopy[i]]);
+            array[k] = arrayCopy[i];
+            k++;
+            i++;
+        }
+        else{
+            animations.push([k, arrayCopy[j]]);
+            array[k] = arrayCopy[j];
+            k++;
+            j++;
+        }
+    }
+
+    while( i<= middle){
+        animations.push([i, i]);
+        animations.push([i, i]);
+        animations.push([k, arrayCopy[i]]);
+        array[k] = arrayCopy[i];
+        k++;
+        i++;
+    }
+
+    while( j <= right){
+        animations.push([j, j]);
+        animations.push([j, j]);
+        animations.push([k, arrayCopy[j]]);
+        array[k] = arrayCopy[j];
+        k++;
+        j++;
+    }
+
+}
 
 export const quickSort = array => {
 
