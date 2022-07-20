@@ -19,7 +19,7 @@ export default class SortingVisualizer extends React.Component {
 
     resetArray() {
         const array = [];
-        for(let i = 0; i < Math.floor(document.documentElement.clientWidth*0.75)/5; i++){
+        for(let i = 0; i < Math.floor(document.documentElement.clientWidth*0.75)/10; i++){
             array.push(randomIntFromInterval(5, Math.floor(window.innerHeight*0.75)));
         }
         this.setState({array});
@@ -40,7 +40,7 @@ export default class SortingVisualizer extends React.Component {
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
-                }, i * (slider.value*-1 + 11));
+                }, i * (slider.value*-1 + 21));
                 if(i === animations.length-1){
                     this.enableButtons();
                 }
@@ -53,7 +53,7 @@ export default class SortingVisualizer extends React.Component {
                     if(i === animations.length-1){
                         this.enableButtons();
                     }
-                }, i * (slider.value*-1 + 11));
+                }, i * (slider.value*-1 + 21));
             }
         }
     }
@@ -63,7 +63,39 @@ export default class SortingVisualizer extends React.Component {
     }
 
     heapSort() {
-
+        this.disableButtons();
+        var slider = document.getElementById('slider');
+        const animations = sortingAlgorithms.heapSort(this.state.array);
+        for(let i = 0; i < animations.length; i++){
+            const arrBars = document.getElementsByClassName('array-bar');
+            const changeColor = i % 3 !== 2;
+            if(changeColor){
+                const [idxOne, idxTwo] = animations[i];
+                const idxOneStyle = arrBars[idxOne].style;
+                const idxTwoStyle = arrBars[idxTwo].style;
+                const color = i % 3 === 0 ? 'orange' : 'blue';
+                setTimeout(() => {
+                    idxOneStyle.backgroundColor = color;
+                    idxTwoStyle.backgroundColor = color;
+                }, i * (slider.value*-1 + 21));
+                if( i === animations.length-1){
+                    this.enableButtons();
+                }
+            }
+            else{
+                setTimeout(() => {
+                    const [heightOne, heightTwo] = animations[i];
+                    const [idxOne, idxTwo] = animations[i-1];
+                    const idxOneStyle = arrBars[idxOne].style;
+                    const idxTwoStyle = arrBars[idxTwo].style;
+                    idxOneStyle.height = `${heightTwo}px`;
+                    idxTwoStyle.height = `${heightOne}px`;
+                    if(i === animations.length-1){
+                        this.enableButtons();
+                    }
+                }, i * (slider.value*-1 + 21));
+            }
+        }
     }
 
     bubbleSort() {
@@ -81,7 +113,7 @@ export default class SortingVisualizer extends React.Component {
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
-                }, i * (slider.value*-1 + 11));
+                }, i * (slider.value*-1 + 21));
                 if(i === animations.length-1){
                     this.enableButtons();
                 }
@@ -99,7 +131,7 @@ export default class SortingVisualizer extends React.Component {
                     if(i === animations.length-1){
                         this.enableButtons();
                     }
-                }, i * (slider.value*-1 + 11));
+                }, i * (slider.value*-1 + 21));
             }
         }
     }
@@ -111,12 +143,14 @@ export default class SortingVisualizer extends React.Component {
         var heapBtn = document.getElementById('heap');
         var bubbleBtn = document.getElementById('bubble');
         var testBtn = document.getElementById('test');
+        var slider = document.getElementById('slider');
         genBtn.disabled = true;
         mergeBtn.disabled = true;
         quickBtn.disabled = true;
         heapBtn.disabled = true;
         bubbleBtn.disabled = true;
         testBtn.disabled = true;
+        slider.disabled = true;
     }
 
     enableButtons() {
@@ -126,12 +160,14 @@ export default class SortingVisualizer extends React.Component {
         var heapBtn = document.getElementById('heap');
         var bubbleBtn = document.getElementById('bubble');
         var testBtn = document.getElementById('test');
+        var slider = document.getElementById('slider');
         genBtn.disabled = false;
         mergeBtn.disabled = false;
         quickBtn.disabled = false;
         heapBtn.disabled = false;
         bubbleBtn.disabled = false;
         testBtn.disabled = false;
+        slider.disabled = false;
     }
 
     testAlgo() {
@@ -142,7 +178,7 @@ export default class SortingVisualizer extends React.Component {
                 array.push(randomIntFromInterval(-1000, 1000));
             }
             const sortedArray = array.slice().sort((a, b) => a - b);
-            const algoArray = sortingAlgorithms.mergeSort(array.slice());
+            const algoArray = sortingAlgorithms.heapSort(array.slice());
             console.log(arraysAreEqual(sortedArray, algoArray));
         }
     }
@@ -172,8 +208,8 @@ export default class SortingVisualizer extends React.Component {
                     type = "range" 
                     id = "slider" 
                     min = "1" 
-                    max = "10" 
-                    defaultValue = "10"
+                    max = "20" 
+                    defaultValue = "20"
                     className = "slider"
                     name = "sliderName"
                     />
