@@ -60,15 +60,59 @@ function merge(array, left, middle, right, arrayCopy, animations)
 
 }
 
-export const quickSort = array => {
-
+export function quickSort(array){
+    
     return array;
-};
+}
 
-export const heapSort = array => {
+export function heapSort(array){
 
-    return array;
-};
+    const animations = [];
+    var i;
+    var length = array.length;
+
+    for(i = Math.floor(length / 2) - 1; i >= 0; i--){
+        heapify(array, length, i, animations);
+    }
+
+    
+    for(i = length - 1; i > 0; i--){
+        animations.push([0, i]);
+        animations.push([0, i]);
+        animations.push([array[0], array[i]]);
+        var tmp = array[0];
+        array[0] = array[i];
+        array[i] = tmp;
+        heapify(array, i, 0, animations);
+    }
+
+    return animations;
+}
+
+function heapify(array, length, i, animations) {
+    var large = i;
+    var left = 2 * i + 1;
+    var right = 2 * i + 2;
+
+    if(left < length && array[left] > array[large]){
+        large = left;
+    }
+
+    if(right < length && array[right] > array[large]){
+        large = right;
+    }
+
+    if(large !== i){
+        animations.push([i, large]);
+        animations.push([i, large]);
+        animations.push([array[i], array[large]]);
+        var tmp = array[i];
+        array[i] = array[large];
+        array[large] = tmp;
+        heapify(array, length, large, animations);
+    }
+
+}
 
 export function bubbleSort(array){
     const animations = [];
