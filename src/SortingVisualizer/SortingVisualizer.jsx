@@ -22,7 +22,13 @@ export default class SortingVisualizer extends React.Component {
         for(let i = 0; i < Math.floor(document.documentElement.clientWidth*0.75)/10; i++){
             array.push(randomIntFromInterval(5, Math.floor(window.innerHeight*0.75)));
         }
+        
         this.setState({array});
+        
+        for(let i = 0; i < this.state.array.length; i++){
+            const arrBars = document.getElementsByClassName('array-bar');
+            arrBars[i].style.backgroundColor = 'blue';
+        }
     }
 
     mergeSort() {
@@ -43,6 +49,12 @@ export default class SortingVisualizer extends React.Component {
                 }, i * (slider.value*-1 + 21));
                 if(i === animations.length-1){
                     this.enableButtons();
+                    for(let i = 0; i < this.state.array.length; i++){
+                        const arrBars = document.getElementsByClassName('array-bar');
+                        setTimeout(() => {
+                            arrBars[i].style.backgroundColor = 'lightgreen';
+                     }, i * (slider.value*-1 + 21));
+                    }
                 }
             }
             else{
@@ -52,6 +64,12 @@ export default class SortingVisualizer extends React.Component {
                     idxOneStyle.height = `${heightChange}px`;
                     if(i === animations.length-1){
                         this.enableButtons();
+                        for(let i = 0; i < this.state.array.length; i++){
+                            const arrBars = document.getElementsByClassName('array-bar');
+                            setTimeout(() => {
+                                arrBars[i].style.backgroundColor = 'lightgreen';
+                         }, i * (slider.value*-1 + 21));
+                        }
                     }
                 }, i * (slider.value*-1 + 21));
             }
@@ -59,7 +77,51 @@ export default class SortingVisualizer extends React.Component {
     }
 
     quickSort() {
-
+        this.disableButtons();
+        var slider = document.getElementById('slider');
+        const animations = sortingAlgorithms.quickSort(this.state.array);
+        for(let i = 0; i < animations.length; i++){
+            const arrBars = document.getElementsByClassName('array-bar');
+            const changeColor = i % 3 !== 2;
+            if(changeColor){
+                const [idxOne, idxTwo] = animations[i];
+                const idxOneStyle = arrBars[idxOne].style;
+                const idxTwoStyle = arrBars[idxTwo].style;
+                const color = i % 3 === 0 ? 'orange' : 'blue';
+                setTimeout(() => {
+                    idxOneStyle.backgroundColor = color;
+                    idxTwoStyle.backgroundColor = color;
+                }, i * (slider.value*-1 + 21));
+                if( i === animations.length-1){
+                    this.enableButtons();
+                    for(let i = 0; i < this.state.array.length; i++){
+                        const arrBars = document.getElementsByClassName('array-bar');
+                        setTimeout(() => {
+                            arrBars[i].style.backgroundColor = 'lightgreen';
+                     }, i * (slider.value*-1 + 21));
+                    }
+                }
+            }
+            else{
+                setTimeout(() => {
+                    const [heightOne, heightTwo] = animations[i];
+                    const [idxOne, idxTwo] = animations[i-1];
+                    const idxOneStyle = arrBars[idxOne].style;
+                    const idxTwoStyle = arrBars[idxTwo].style;
+                    idxOneStyle.height = `${heightTwo}px`;
+                    idxTwoStyle.height = `${heightOne}px`;
+                    if(i === animations.length-1){
+                        this.enableButtons();
+                        for(let i = 0; i < this.state.array.length; i++){
+                            const arrBars = document.getElementsByClassName('array-bar');
+                            setTimeout(() => {
+                                arrBars[i].style.backgroundColor = 'lightgreen';
+                         }, i * (slider.value*-1 + 21));
+                        }
+                    }
+                }, i * (slider.value*-1 + 21));
+            }
+        }
     }
 
     heapSort() {
@@ -80,6 +142,12 @@ export default class SortingVisualizer extends React.Component {
                 }, i * (slider.value*-1 + 21));
                 if( i === animations.length-1){
                     this.enableButtons();
+                    for(let i = 0; i < this.state.array.length; i++){
+                        const arrBars = document.getElementsByClassName('array-bar');
+                        setTimeout(() => {
+                            arrBars[i].style.backgroundColor = 'lightgreen';
+                     }, i * (slider.value*-1 + 21));
+                    }
                 }
             }
             else{
@@ -92,6 +160,12 @@ export default class SortingVisualizer extends React.Component {
                     idxTwoStyle.height = `${heightOne}px`;
                     if(i === animations.length-1){
                         this.enableButtons();
+                        for(let i = 0; i < this.state.array.length; i++){
+                            const arrBars = document.getElementsByClassName('array-bar');
+                            setTimeout(() => {
+                                arrBars[i].style.backgroundColor = 'lightgreen';
+                         }, i * (slider.value*-1 + 21));
+                        }
                     }
                 }, i * (slider.value*-1 + 21));
             }
@@ -116,6 +190,12 @@ export default class SortingVisualizer extends React.Component {
                 }, i * (slider.value*-1 + 21));
                 if(i === animations.length-1){
                     this.enableButtons();
+                    for(let i = 0; i < this.state.array.length; i++){
+                        const arrBars = document.getElementsByClassName('array-bar');
+                        setTimeout(() => {
+                            arrBars[i].style.backgroundColor = 'lightgreen';
+                     }, i * (slider.value*-1 + 21));
+                    }
                 }
             }
             else{
@@ -130,6 +210,12 @@ export default class SortingVisualizer extends React.Component {
                     }
                     if(i === animations.length-1){
                         this.enableButtons();
+                        for(let i = 0; i < this.state.array.length; i++){
+                            const arrBars = document.getElementsByClassName('array-bar');
+                            setTimeout(() => {
+                                arrBars[i].style.backgroundColor = 'lightgreen';
+                         }, i * (slider.value*-1 + 21));
+                        }
                     }
                 }, i * (slider.value*-1 + 21));
             }
@@ -178,7 +264,7 @@ export default class SortingVisualizer extends React.Component {
                 array.push(randomIntFromInterval(-1000, 1000));
             }
             const sortedArray = array.slice().sort((a, b) => a - b);
-            const algoArray = sortingAlgorithms.heapSort(array.slice());
+            const algoArray = sortingAlgorithms.quickSort(array.slice());
             console.log(arraysAreEqual(sortedArray, algoArray));
         }
     }
