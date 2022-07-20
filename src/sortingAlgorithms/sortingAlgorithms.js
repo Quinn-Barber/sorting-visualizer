@@ -61,8 +61,47 @@ function merge(array, left, middle, right, arrayCopy, animations)
 }
 
 export function quickSort(array){
-    
-    return array;
+    const animations = [];
+
+    quickSortRecurse(animations, array, 0, array.length-1);
+
+    return animations;
+}
+
+function quickSortRecurse(animations, array, low, high){
+    if( low < high ){
+        var partition = partitionQuickSort(animations, array, low, high);
+
+
+        quickSortRecurse(animations, array, low, partition - 1);
+        quickSortRecurse(animations, array, partition + 1, high);
+    }
+}
+
+function partitionQuickSort(animations, array, low, high){
+
+    var pivotVar = array[high];
+    var i = (low - 1);
+    var temp;
+    for(var j = low; j <= high - 1; j++){
+        if(array[j] < pivotVar){
+            i++;
+            animations.push([i, j]);
+            animations.push([i, j]);
+            animations.push([array[i], array[j]]);
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+    animations.push([i+1, high]);
+    animations.push([i+1, high]);
+    animations.push([array[i+1], array[high]]);
+    temp = array[i+1];
+    array[i+1] = array[high];
+    array[high] = temp;
+
+    return (i+1);
 }
 
 export function heapSort(array){
