@@ -1,7 +1,7 @@
 # Sorting Visualizer App
 
 ### Used to visualize sorting algorithms on arrays through bar graphs.
-
+### Source code available in branch labled `master`
 ### Algorithms implemented include:
 * Merge Sort
 * Quick Sort
