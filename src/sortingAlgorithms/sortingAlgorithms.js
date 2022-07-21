@@ -60,6 +60,60 @@ function merge(array, left, middle, right, arrayCopy, animations)
 
 }
 
+export function selectionSort(array){
+
+    var i, j, minIdx;
+    const animations = [];
+
+    for(i = 0; i < array.length-1; i++){
+
+        minIdx = i;
+
+        for(j = i + 1; j < array.length; j++){
+            animations.push([j, minIdx]);
+            animations.push([j, minIdx]);
+            animations.push([-1, -1]);
+            if(array[j] < array[minIdx]){
+                minIdx = j;
+            }
+        }
+
+        animations.push([i, minIdx]);
+        animations.push([i, minIdx]);
+        animations.push([array[i], array[minIdx]]);
+        var tmp = array[i];
+        array[i] = array[minIdx];
+        array[minIdx] = tmp;
+    }
+    return animations;
+}
+
+export function insertionSort(array){
+    const animations = [];
+    var key, j;
+    for(let i = 1; i < array.length; i++){
+        key = array[i];
+        j = i - 1;
+
+        while(j >= 0 && key < array[j]){
+            animations.push([j+1, j]);
+            animations.push([j+1, j]);
+            animations.push(array[j]);
+            array[j+1] = array[j];
+            j = j - 1;
+        }
+        animations.push([j+1, i]);
+        animations.push([j+1, i]);
+        animations.push(key);
+        array[j+1] = key;
+    }
+    return animations;
+}
+
+export function radixSort(array){
+
+}
+
 export function quickSort(array){
     const animations = [];
 
