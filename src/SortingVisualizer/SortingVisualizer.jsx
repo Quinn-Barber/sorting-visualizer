@@ -222,20 +222,118 @@ export default class SortingVisualizer extends React.Component {
         }
     }
 
+    insertionSort() {
+        this.disableButtons();
+        var slider = document.getElementById('slider');
+        const animations = sortingAlgorithms.insertionSort(this.state.array);
+        for(let i = 0; i < animations.length; i++){
+            const arrBars = document.getElementsByClassName('array-bar');
+            const changeColor = i % 3 !== 2;
+            if(changeColor){
+                const [idxOne, idxTwo] = animations[i];
+                const idxOneStyle = arrBars[idxOne].style;
+                const idxTwoStyle = arrBars[idxTwo].style;
+                const color = i % 3 === 0 ? 'orange' : 'blue';
+                setTimeout(() => {
+                    idxOneStyle.backgroundColor = color;
+                    idxTwoStyle.backgroundColor = color;
+                }, i * (slider.value*-1 + 21));
+                if(i === animations.length-1){
+                    this.enableButtons();
+                    for(let i = 0; i < this.state.array.length; i++){
+                        const arrBars = document.getElementsByClassName('array-bar');
+                        setTimeout(() => {
+                            arrBars[i].style.backgroundColor = 'lightgreen';
+                     }, i * (slider.value*-1 + 21));
+                    }
+                }
+            }
+            else{
+                setTimeout(() => {
+                    const heightOne = animations[i];
+                    const [idxOne, idxTwo] = animations[i-1];
+                    const idxOneStyle = arrBars[idxOne].style;
+                    idxOneStyle.height = `${heightOne}px`;
+                    if(i === animations.length-1){
+                        this.enableButtons();
+                        for(let i = 0; i < this.state.array.length; i++){
+                            const arrBars = document.getElementsByClassName('array-bar');
+                            setTimeout(() => {
+                                arrBars[i].style.backgroundColor = 'lightgreen';
+                         }, i * (slider.value*-1 + 21));
+                        }
+                    }
+                }, i * (slider.value*-1 + 21));
+            }
+        }
+    }
+
+    selectionSort() {
+        this.disableButtons();
+        var slider = document.getElementById('slider');
+        const animations = sortingAlgorithms.selectionSort(this.state.array);
+        for(let i = 0; i < animations.length; i++){
+            const arrBars = document.getElementsByClassName('array-bar');
+            const changeColor = i % 3 !== 2;
+            if(changeColor){
+                const [idxOne, idxTwo] = animations[i];
+                const idxOneStyle = arrBars[idxOne].style;
+                const idxTwoStyle = arrBars[idxTwo].style;
+                const color = i % 3 === 0 ? 'orange' : 'blue';
+                setTimeout(() => {
+                    idxOneStyle.backgroundColor = color;
+                    idxTwoStyle.backgroundColor = color;
+                }, i * (slider.value*-1 + 21));
+                if(i === animations.length-1){
+                    this.enableButtons();
+                    for(let i = 0; i < this.state.array.length; i++){
+                        const arrBars = document.getElementsByClassName('array-bar');
+                        setTimeout(() => {
+                            arrBars[i].style.backgroundColor = 'lightgreen';
+                     }, i * (slider.value*-1 + 21));
+                    }
+                }
+            }
+            else{
+                setTimeout(() => {
+                    const [heightOne, heightTwo] = animations[i];
+                    if(heightOne !== -1 && heightTwo !== -1){
+                        const [idxOne, idxTwo] = animations[i-1];
+                        const idxOneStyle = arrBars[idxOne].style;
+                        const idxTwoStyle = arrBars[idxTwo].style;
+                        idxOneStyle.height = `${heightTwo}px`;
+                        idxTwoStyle.height = `${heightOne}px`;
+                    }
+                    if(i === animations.length-1){
+                        this.enableButtons();
+                        for(let i = 0; i < this.state.array.length; i++){
+                            const arrBars = document.getElementsByClassName('array-bar');
+                            setTimeout(() => {
+                                arrBars[i].style.backgroundColor = 'lightgreen';
+                         }, i * (slider.value*-1 + 21));
+                        }
+                    }
+                }, i * (slider.value*-1 + 21));
+            }
+        }
+    }
+
     disableButtons() {
         var genBtn = document.getElementById('gen');
         var mergeBtn = document.getElementById('merge');
         var quickBtn = document.getElementById('quick');
         var heapBtn = document.getElementById('heap');
         var bubbleBtn = document.getElementById('bubble');
-        var testBtn = document.getElementById('test');
+        var insertBtn = document.getElementById('insertion');
+        var selectBtn = document.getElementById('selection');
         var slider = document.getElementById('slider');
         genBtn.disabled = true;
         mergeBtn.disabled = true;
         quickBtn.disabled = true;
         heapBtn.disabled = true;
         bubbleBtn.disabled = true;
-        testBtn.disabled = true;
+        insertBtn.disabled = true;
+        selectBtn.disabled = true;
         slider.disabled = true;
     }
 
@@ -245,14 +343,16 @@ export default class SortingVisualizer extends React.Component {
         var quickBtn = document.getElementById('quick');
         var heapBtn = document.getElementById('heap');
         var bubbleBtn = document.getElementById('bubble');
-        var testBtn = document.getElementById('test');
+        var insertBtn = document.getElementById('insertion');
+        var selectBtn = document.getElementById('selection');
         var slider = document.getElementById('slider');
         genBtn.disabled = false;
         mergeBtn.disabled = false;
         quickBtn.disabled = false;
         heapBtn.disabled = false;
         bubbleBtn.disabled = false;
-        testBtn.disabled = false;
+        insertBtn.disabled = false;
+        selectBtn.disabled = false;
         slider.disabled = false;
     }
 
@@ -264,14 +364,14 @@ export default class SortingVisualizer extends React.Component {
                 array.push(randomIntFromInterval(-1000, 1000));
             }
             const sortedArray = array.slice().sort((a, b) => a - b);
-            const algoArray = sortingAlgorithms.quickSort(array.slice());
+            const algoArray = sortingAlgorithms.selectionSort(array.slice());
             console.log(arraysAreEqual(sortedArray, algoArray));
         }
     }
 
     render() {
         const {array} = this.state;
-
+        //<button id = "test" onClick={() => this.testAlgo()}>Test Algo</button>
         return (
             <div className="array-container">
                 {array.map((value, idx) => (
@@ -287,7 +387,8 @@ export default class SortingVisualizer extends React.Component {
                     <button id = "quick" onClick={() => this.quickSort()}>Quick Sort</button>
                     <button id = "heap" onClick={() => this.heapSort()}>Heap Sort</button>
                     <button id = "bubble" onClick={() => this.bubbleSort()}>Bubble Sort</button>
-                    <button id = "test" onClick={() => this.testAlgo()}>Test Algo</button>
+                    <button id = "insertion" onClick={() => this.insertionSort()}>Insertion Sort</button>
+                    <button id = "selection" onClick={() => this.selectionSort()}>Selection Sort</button>
                 </div>
                 <div className="slider-container">
                     <input 
