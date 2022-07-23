@@ -27,7 +27,7 @@ export default class SortingVisualizer extends React.Component {
         
         for(let i = 0; i < this.state.array.length; i++){
             const arrBars = document.getElementsByClassName('array-bar');
-            arrBars[i].style.backgroundColor = 'blue';
+            arrBars[i].style.backgroundColor = 'aqua';
         }
     }
 
@@ -42,7 +42,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'blue';
+                const color = i % 3 === 0 ? 'orange' : 'aqua';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -87,7 +87,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'blue';
+                const color = i % 3 === 0 ? 'orange' : 'aqua';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -135,7 +135,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'blue';
+                const color = i % 3 === 0 ? 'orange' : 'aqua';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -183,7 +183,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'blue';
+                const color = i % 3 === 0 ? 'orange' : 'aqua';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -233,7 +233,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'blue';
+                const color = i % 3 === 0 ? 'orange' : 'aqua';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -279,7 +279,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'blue';
+                const color = i % 3 === 0 ? 'orange' : 'aqua';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -327,6 +327,9 @@ export default class SortingVisualizer extends React.Component {
         var insertBtn = document.getElementById('insertion');
         var selectBtn = document.getElementById('selection');
         var slider = document.getElementById('slider');
+        var label = document.getElementById('label');
+        label.style.color = 'white';
+        label.style.border = '3px solid white';
         genBtn.disabled = true;
         mergeBtn.disabled = true;
         quickBtn.disabled = true;
@@ -346,6 +349,9 @@ export default class SortingVisualizer extends React.Component {
         var insertBtn = document.getElementById('insertion');
         var selectBtn = document.getElementById('selection');
         var slider = document.getElementById('slider');
+        var label = document.getElementById('label');
+        label.style.color = 'black';
+        label.style.border = '3px solid black';
         genBtn.disabled = false;
         mergeBtn.disabled = false;
         quickBtn.disabled = false;
@@ -401,7 +407,7 @@ export default class SortingVisualizer extends React.Component {
                     name = "sliderName"
                     />
                 </div>
-                <label htmlFor = "sliderName">Change Speed</label>
+                <label id = "label" htmlFor = "sliderName">Change Speed</label>
             </div>
         );
     }
