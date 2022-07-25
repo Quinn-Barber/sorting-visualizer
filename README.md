@@ -1,6 +1,8 @@
-# Source Code for React Project
+# Sorting Visualizer App
 
-### Sorting Algorithms stored in separate folder and script that includes:
+### Used to visualize sorting algorithms on arrays through bar graphs.
+### Source code available in branch labled `master`
+### Algorithms implemented include:
 * Merge Sort
 * Quick Sort
 * Heap Sort
@@ -8,4 +10,5 @@
 * Insertion Sort
 * Selection Sort
 
-### Sorting Visualizer components also stored in its own folder
+
+### Accessible at https://quinn-barber.github.io/sortingVisualizer/
