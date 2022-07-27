@@ -12,3 +12,5 @@
 
 
 ### Accessible at https://quinn-barber.github.io/sortingVisualizer/
+
+> Inspired by Clément Mihailescu
