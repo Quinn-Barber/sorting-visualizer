@@ -2,7 +2,7 @@
 
 
 body {
-    background-color: #2c3e50;
+    background-color: #121212;
 }
 
 .array-container {
@@ -15,23 +15,21 @@ body {
 
 .array-bar{
     width: 6px;
-    background-color: aqua;
-    display:inline-block;
+    background-color: #BB86FC;
+    display: inline-block;
     margin: 0 1px;
 }
 
 .array-container button{
     cursor: pointer;
-    background-color: aqua;
+    background-color: #BB86FC;
     color: black;
     font-family: inherit;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-left: 3px;
     margin-right: 3px;
     box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
-    border-width: 4px;
-    border-radius: 10px;
     transition: 0.2s ease-in-out;
 }
 
@@ -41,23 +39,21 @@ body {
 }
 
 .slider{
-    accent-color: black;
+    width: 50%;
+    accent-color: #BB86FC;
     cursor: pointer;
-    opacity: 0.7;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: aqua;
+    opacity: 1.0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #BB86FC;
 }
 
 label{
-    background-color: aqua;
+    background-color: #BB86FC;
     color: black;
     font-family: inherit;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    border: 3px solid black;
-    border-width: 4px;
-    border-radius: 10px;
     padding: 0.2rem;
 }
 

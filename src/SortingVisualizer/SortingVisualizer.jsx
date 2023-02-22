@@ -12,9 +12,18 @@ export default class SortingVisualizer extends React.Component {
             array: [],
         };
     }
+    resize = () => {
+        this.forceUpdate()
+        this.resetArray();
+    }
 
     componentDidMount() {
+        window.addEventListener('resize', this.resize)
         this.resetArray();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resize)
     }
 
     resetArray() {
@@ -27,7 +36,7 @@ export default class SortingVisualizer extends React.Component {
         
         for(let i = 0; i < this.state.array.length; i++){
             const arrBars = document.getElementsByClassName('array-bar');
-            arrBars[i].style.backgroundColor = 'aqua';
+            arrBars[i].style.backgroundColor = '#BB86FC';
         }
     }
 
@@ -42,7 +51,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'aqua';
+                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -87,7 +96,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'aqua';
+                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -135,7 +144,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'aqua';
+                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -183,7 +192,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'aqua';
+                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -233,7 +242,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'aqua';
+                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -279,7 +288,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : 'aqua';
+                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
