@@ -11,6 +11,4 @@
 * Selection Sort
 
 
-### Accessible at https://quinn-barber.github.io/sortingVisualizer/
-
-> Inspired by Clément Mihailescu
+### Accessible at https://quinn-barber.github.io/sorting-visualizer/
