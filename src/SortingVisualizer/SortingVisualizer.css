@@ -2,7 +2,7 @@
 
 
 body {
-    background-color: #121212;
+    background-color: rgb(230, 230, 230);
 }
 
 .array-container {
@@ -15,45 +15,61 @@ body {
 
 .array-bar{
     width: 6px;
-    background-color: #BB86FC;
+    background-color: rgba(66, 134, 244, 0.8);
     display: inline-block;
     margin: 0 1px;
+    border: 1px solid black;
 }
 
 .array-container button{
-    cursor: pointer;
-    background-color: #BB86FC;
-    color: black;
+    text-decoration: none;
     font-family: inherit;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-left: 3px;
-    margin-right: 3px;
-    box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
-    transition: 0.2s ease-in-out;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    display: inline-block;
+    margin: 6px 8px 6px 0;
+    min-width: 88px;
+    text-align: center;
+    transition: 0.1s all ease;
 }
 
+.array-container button:hover:enabled {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.4);
+  }
+
 .array-container button:disabled{
-    border-color: white;
-    color: white;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
 }
 
 .slider{
     width: 50%;
-    accent-color: #BB86FC;
+    accent-color: rgba(66, 134, 244, 0.8);
     cursor: pointer;
     opacity: 1.0;
     margin-top: 20px;
     margin-bottom: 20px;
-    background: #BB86FC;
+    background: black;
 }
 
 label{
-    background-color: #BB86FC;
-    color: black;
+    text-decoration: none;
     font-family: inherit;
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 0.2rem;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    display: inline-block;
+    margin: 6px 8px 6px 0;
+    min-width: 15vw;
+    text-align: center;
+    transition: 0.1s all ease;
 }
 

@@ -36,7 +36,7 @@ export default class SortingVisualizer extends React.Component {
         
         for(let i = 0; i < this.state.array.length; i++){
             const arrBars = document.getElementsByClassName('array-bar');
-            arrBars[i].style.backgroundColor = '#BB86FC';
+            arrBars[i].style.backgroundColor = 'rgba(66, 134, 244, 0.8)';
         }
     }
 
@@ -51,7 +51,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
+                const color = i % 3 === 0 ? 'orange' : 'rgba(66, 134, 244, 0.8)';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -96,7 +96,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
+                const color = i % 3 === 0 ? 'orange' : 'rgba(66, 134, 244, 0.8)';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -144,7 +144,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
+                const color = i % 3 === 0 ? 'orange' : 'rgba(66, 134, 244, 0.8)';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -192,7 +192,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
+                const color = i % 3 === 0 ? 'orange' : 'rgba(66, 134, 244, 0.8)';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -242,7 +242,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
+                const color = i % 3 === 0 ? 'orange' : 'rgba(66, 134, 244, 0.8)';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -288,7 +288,7 @@ export default class SortingVisualizer extends React.Component {
                 const [idxOne, idxTwo] = animations[i];
                 const idxOneStyle = arrBars[idxOne].style;
                 const idxTwoStyle = arrBars[idxTwo].style;
-                const color = i % 3 === 0 ? 'orange' : '#BB86FC';
+                const color = i % 3 === 0 ? 'orange' : 'rgba(66, 134, 244, 0.8)';
                 setTimeout(() => {
                     idxOneStyle.backgroundColor = color;
                     idxTwoStyle.backgroundColor = color;
@@ -337,8 +337,9 @@ export default class SortingVisualizer extends React.Component {
         var selectBtn = document.getElementById('selection');
         var slider = document.getElementById('slider');
         var label = document.getElementById('label');
-        label.style.color = 'white';
-        label.style.border = '3px solid white';
+        label.style.color = '#666666';
+        label.style.backgroundColor = '#cccccc';
+        label.style.border = 'border: 1px solid #999999';
         genBtn.disabled = true;
         mergeBtn.disabled = true;
         quickBtn.disabled = true;
@@ -360,7 +361,8 @@ export default class SortingVisualizer extends React.Component {
         var slider = document.getElementById('slider');
         var label = document.getElementById('label');
         label.style.color = 'black';
-        label.style.border = '3px solid black';
+        label.style.backgroundColor = 'rgb(230, 230, 230)';
+        label.style.border = 'none';
         genBtn.disabled = false;
         mergeBtn.disabled = false;
         quickBtn.disabled = false;
